@@ -5,12 +5,14 @@ import Success from "./pages/successPage";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/success" element={<Success />} />
-      </Routes>
-    </Router>
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/success" element={<Success />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
