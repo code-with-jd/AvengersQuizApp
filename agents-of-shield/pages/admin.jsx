@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
-import { Checkbox, TextField } from "@mui/material";
+import { Button, Checkbox, TextField } from "@mui/material";
 
 export default function Home() {
   const session = useSession();
   const supabase = useSupabaseClient();
   const [newQuestionValue, setNewQuestionValue] = useState("");
   const [questionsDatabase, setQuestionsDatabase] = useState([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(4);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState();
   const [newAnswerOptions, setNewAnswerOptions] = useState([
     { value: "", correct: false },
     { value: "", correct: false },
@@ -50,7 +50,7 @@ export default function Home() {
 
       console.log(data);
     } else {
-      alert("Bitte fülle alle Felder aus");
+      alert("Check your input fields");
     }
   }
 
@@ -115,40 +115,49 @@ export default function Home() {
 
   return (
     <div>
-      <div className="addQuestionContainer">
-        <TextField
-          label="Question"
-          required
-          value={newQuestionValue}
-          onChange={(e) => setNewQuestionValue(e.target.value)}
-        />
+      <header>
+        <img src="" alt="" />
+      </header>
+      <body>
+        <div className="addTableRowContainer">
+          <TextField
+            label="Question"
+            required
+            value={newQuestionValue}
+            onChange={(e) => setNewQuestionValue(e.target.value)}
+          />
 
-        {newAnswerOptions.map((answerOption, index) => {
-          return (
-            <div className="addAnswerContainer" key={index + "AnswerContainer"}>
-              <TextField
-                label={"Answer " + (index + 1)} // 1, 2, 3, 4
-                required
-                value={answerOption.value}
-                onChange={(e) => {
-                  const newAnswerOptionsCopy = [...newAnswerOptions];
-                  newAnswerOptionsCopy[index].value = e.target.value;
-                  setNewAnswerOptions(newAnswerOptionsCopy);
-                }}
-              />
-              <Checkbox // Checkbox for correct answer
-                onChange={(e) => {
-                  const newAnswerOptionsCopy = [...newAnswerOptions];
-                  newAnswerOptionsCopy[index].correct = e.target.checked;
-                  setNewAnswerOptions(newAnswerOptionsCopy);
-                }}
-              />
-            </div>
-          );
-        })}
-
-        <input type="submit" onClick={() => addNewRow()} />
-      </div>
+          {newAnswerOptions.map((answerOption, index) => {
+            return (
+              <div
+                className="addAnswerContainer"
+                key={index + "AnswerContainer"}
+              >
+                <TextField
+                  label={"Answer " + (index + 1)} // 1, 2, 3, 4
+                  required
+                  value={answerOption.value}
+                  onChange={(e) => {
+                    const newAnswerOptionsCopy = [...newAnswerOptions];
+                    newAnswerOptionsCopy[index].value = e.target.value;
+                    setNewAnswerOptions(newAnswerOptionsCopy);
+                  }}
+                />
+                <Checkbox // Checkbox for correct answer
+                  onChange={(e) => {
+                    const newAnswerOptionsCopy = [...newAnswerOptions];
+                    newAnswerOptionsCopy[index].correct = e.target.checked;
+                    setNewAnswerOptions(newAnswerOptionsCopy);
+                  }}
+                />
+              </div>
+            );
+          })}
+          <Button className="submitButton" onClick={() => addNewRow()}>
+            Submit question
+          </Button>
+        </div>
+      </body>
     </div>
   );
 }

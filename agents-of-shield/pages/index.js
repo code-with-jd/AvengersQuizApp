@@ -27,18 +27,23 @@ export default function Home() {
 
   return (
     <div>
-      {questionsDatabase.length > 0 && (
-        <div>
-          <h3>{questionsDatabase[4].question}</h3>
-          {questionsDatabase[4].answers.map((answerOption) => {
-            return (
-              <div key={answerOption.value}>
-                <p>{answerOption.value}</p>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <header>
+        <img src="" alt="" />
+      </header>
+      <body>
+        {questionsDatabase.length > 0 && (
+          <div>
+            <h3>{questionsDatabase[4].question}</h3>
+            {questionsDatabase[4].answers.map((answerOption) => {
+              return (
+                <div key={answerOption.value}>
+                  <p>{answerOption.value}</p>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </body>
     </div>
   );
 }
