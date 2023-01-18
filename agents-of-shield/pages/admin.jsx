@@ -54,7 +54,7 @@ export default function Home() {
     }
   }
 
-  async function fetchDatenbank() {
+  async function ffetchDatabase() {
     const { data, error } = await supabase
       .from("QuestionsDatabase")
       .select("*");
@@ -67,7 +67,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    fetchDatenbank();
+    ffetchDatabase();
   }, []);
 
   async function addAnswer() {
@@ -92,7 +92,7 @@ export default function Home() {
     console.log(data);
     setNewAnswerValue("");
     setNewAnswerCorrect(false);
-    fetchDatenbank();
+    ffetchDatabase();
   }
 
   async function handleDeleteAnswer(answerValue) {
@@ -110,14 +110,13 @@ export default function Home() {
       return;
     }
     console.log(data);
-    fetchDatenbank();
+    ffetchDatabase();
   }
 
   return (
     <div>
-      <header>
-        <img src="" alt="" />
-      </header>
+      <header></header>
+
       <body>
         <div className="addTableRowContainer">
           <TextField

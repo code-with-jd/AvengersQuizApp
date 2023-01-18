@@ -9,7 +9,7 @@ export default function Home() {
 
   console.log(session);
 
-  async function fetchDatenbank() {
+  async function ffetchDatabase() {
     const { data, error } = await supabase
       .from("QuestionsDatabase")
       .select("*");
@@ -22,7 +22,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    fetchDatenbank();
+    ffetchDatabase();
   }, []);
 
   return (
