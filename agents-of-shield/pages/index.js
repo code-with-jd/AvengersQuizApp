@@ -7,17 +7,15 @@ export default function Home() {
   const [questionsDatabase, setQuestionsDatabase] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  console.log(session);
-
   async function ffetchDatabase() {
     const { data, error } = await supabase
       .from("QuestionsDatabase")
       .select("*");
     if (error) {
-      console.log(error);
+      console.log(error); // Bullit proofing - Check for errors
       return;
     }
-    console.log(data);
+
     setQuestionsDatabase(data);
   }
 
@@ -28,21 +26,28 @@ export default function Home() {
   return (
     <div>
       <header>
-        <img src="" alt="" />
+        <h1>Agents of Shield - Quiz</h1>
       </header>
       <body>
-        {questionsDatabase.length > 0 && (
-          <div>
-            <h3>{questionsDatabase[4].question}</h3>
-            {questionsDatabase[4].answers.map((answerOption) => {
-              return (
-                <div key={answerOption.value}>
-                  <p>{answerOption.value}</p>
-                </div>
-              );
-            })}
+        <div class="quiz">
+          {questionsDatabase.length > 0 && (
+            <div class="QuestionContainer">
+              <h3>{questionsDatabase[0].question}</h3>
+              {questionsDatabase[0].answers.map((answerOption) => {
+                return (
+                  <div key={answerOption.value}>
+                    <button onClick={() => questionCheck()}>
+                      {answerOption.value}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+          <div class="score">
+            <h3>Score</h3>
           </div>
-        )}
+        </div>
       </body>
     </div>
   );

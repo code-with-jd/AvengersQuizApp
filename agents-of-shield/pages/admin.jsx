@@ -43,12 +43,10 @@ export default function Home() {
         },
       ]);
       if (error) {
-        console.log(error);
+        console.log(error); // Bullit proofing - Check for errors
         return;
       }
       resetInputFields();
-
-      console.log(data);
     } else {
       alert("Check your input fields");
     }
@@ -59,10 +57,10 @@ export default function Home() {
       .from("QuestionsDatabase")
       .select("*");
     if (error) {
-      console.log(error);
+      console.log(error); // Bullit proofing - Check for errors
       return;
     }
-    console.log(data);
+
     setQuestionsDatabase(data);
   }
 
@@ -71,7 +69,6 @@ export default function Home() {
   }, []);
 
   async function addAnswer() {
-    console.log(questionsDatabase[currentQuestionIndex].answers);
     if (newAnswerValue === "" || newAnswerValue === undefined) {
       alert("Bitte gib einen Wert ein");
       return;
@@ -86,17 +83,16 @@ export default function Home() {
       })
       .eq("id", questionsDatabase[currentQuestionIndex].id);
     if (error) {
-      console.log(error);
+      console.log(error); // Bullit proofing - Check for errors
       return;
     }
-    console.log(data);
+
     setNewAnswerValue("");
     setNewAnswerCorrect(false);
     ffetchDatabase();
   }
 
   async function handleDeleteAnswer(answerValue) {
-    console.log(answerValue);
     const { data, error } = await supabase
       .from("QuestionsDatabase")
       .update({
@@ -106,16 +102,18 @@ export default function Home() {
       })
       .eq("id", questionsDatabase[currentQuestionIndex].id);
     if (error) {
-      console.log(error);
+      console.log(error); // Bullit proofing - Check for errors
       return;
     }
-    console.log(data);
+
     ffetchDatabase();
   }
 
   return (
     <div>
-      <header></header>
+      <header>
+        <h1>Agents of Shield - Admin</h1>
+      </header>
 
       <body>
         <div className="addTableRowContainer">
