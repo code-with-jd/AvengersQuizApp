@@ -8,20 +8,26 @@ import { AppContext } from "../pages/createContext";
 
 export default function Quiz() {
   const supabase = useSupabaseClient();
+
   const [questionsDatabase, setQuestionsDatabase] = useState(0);
+
   /* Make sure questions will never be the same */
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
     Math.floor(Math.random() * 3)
   );
+
   const [questionCounter, setQuestionCounter] = useState(
     1 /* User defined Value */
   );
+
   const [score, setScore] = useState(0);
+
+  const [showScore, setShowScore] = useState(false);
 
   const { currentAppState, setCurrentAppState } = useContext(AppContext);
 
+  /* Adds 1 to the score if the answer is correct */
   const handleAnwserButtonClick = (correct) => {
-    /* Adds 1 to the score if the answer is correct */
     if (correct === true) {
       setScore(score + 1);
     }
@@ -30,14 +36,17 @@ export default function Quiz() {
     setCurrentQuestionIndex(
       currentQuestionIndex + 1 + Math.floor(Math.random() * 4)
     );
+
     //This is to check how many questions have been answered
     setQuestionCounter(questionCounter + 1);
+
     //Anytime the currentQuestionIndex is equal to the length of the questionsDatabase array, we want to reset the currentQuestionIndex to 0
     if (currentQuestionIndex === questionsDatabase.length - 1) {
       setCurrentQuestionIndex(0);
     }
+
     if (questionCounter === 12 - 1) {
-      showScore(true);
+      setShowScore(true);
     }
   };
 
