@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+import { TextField } from "@mui/material";
 
 export default function Home() {
   const session = useSession();
@@ -29,9 +30,18 @@ export default function Home() {
         <h1>Agents of Shield - Quiz</h1>
       </header>
       <body>
-        <div class="quiz">
+        <div class="menuContainer">
+          <h3>Hauptmenü</h3>
+          <TextField label="Name" required />
+          <button>Bestätigen</button>
+        </div>
+        <div class="scoreConatiner">
+          <h3>Bestenliste</h3>
+        </div>
+
+        <div>
           {questionsDatabase.length > 0 && (
-            <div class="QuestionContainer">
+            <div class="quizContainer">
               <h3>{questionsDatabase[0].question}</h3>
               {questionsDatabase[0].answers.map((answerOption) => {
                 return (
@@ -42,11 +52,9 @@ export default function Home() {
                   </div>
                 );
               })}
+              <h3>Score</h3>
             </div>
           )}
-          <div class="score">
-            <h3>Score</h3>
-          </div>
         </div>
       </body>
     </div>

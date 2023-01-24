@@ -32,10 +32,11 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-  width: 300px;
-  padding: 0.5rem;
+  width: 320px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   border-radius: 3rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   background-color: #1d1d1f;
   color: #f5f5f7;
 }
@@ -52,12 +53,28 @@ button:hover {
   );
 }
 
-.QuestionContainer {
+.menuContainer {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quizContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  gap: 1rem;
+}
+
+.scoreConatiner {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .addTableRowContainer {
@@ -65,32 +82,10 @@ button:hover {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 1rem;
 }
 
 .addAnswerContainer {
   display: flex;
-  gap: 1rem;
   padding: 0.5rem;
-}
-
-.submitButton {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  border-radius: 3rem;
-  background-color: #1d1d1f;
-  color: #f5f5f7;
-}
-
-.submitButton:hover {
-  color: #f5f5f7;
-  background: linear-gradient(
-    90deg,
-    #2ca2b4 0%,
-    #5598de 24%,
-    #7f87ff 45%,
-    #f65aad 76%,
-    #ec3d43 100%
-  );
 }

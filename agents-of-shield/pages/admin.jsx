@@ -150,9 +150,7 @@ export default function Home() {
               </div>
             );
           })}
-          <Button className="submitButton" onClick={() => addNewRow()}>
-            Submit question
-          </Button>
+          <button onClick={() => addNewRow()}>Submit question</button>
         </div>
       </body>
     </div>
