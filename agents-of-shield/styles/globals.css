@@ -15,7 +15,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #000000cc; /* #000000CC is a hex color with 80% opacity; */
+  background-color: #1a1a1c;
 }
 
 h1 {

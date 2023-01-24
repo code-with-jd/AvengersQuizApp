@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
-import { Button, Checkbox, TextField } from "@mui/material";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { Checkbox, TextField } from "@mui/material";
 
 export default function Home() {
-  const session = useSession();
   const supabase = useSupabaseClient();
   const [newQuestionValue, setNewQuestionValue] = useState("");
   const [questionsDatabase, setQuestionsDatabase] = useState([]);
@@ -111,10 +110,6 @@ export default function Home() {
 
   return (
     <div>
-      <header>
-        <h1>Agents of Shield - Admin</h1>
-      </header>
-
       <body>
         <div className="addTableRowContainer">
           <TextField
