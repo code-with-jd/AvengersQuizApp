@@ -109,45 +109,40 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <body>
-        <div className="addTableRowContainer">
-          <TextField
-            label="Question"
-            required
-            value={newQuestionValue}
-            onChange={(e) => setNewQuestionValue(e.target.value)}
-          />
+    <body>
+      <div className="addTableRowContainer">
+        <TextField
+          label="Question"
+          required
+          value={newQuestionValue}
+          onChange={(e) => setNewQuestionValue(e.target.value)}
+        />
 
-          {newAnswerOptions.map((answerOption, index) => {
-            return (
-              <div
-                className="addAnswerContainer"
-                key={index + "AnswerContainer"}
-              >
-                <TextField
-                  label={"Answer " + (index + 1)} // 1, 2, 3, 4
-                  required
-                  value={answerOption.value}
-                  onChange={(e) => {
-                    const newAnswerOptionsCopy = [...newAnswerOptions];
-                    newAnswerOptionsCopy[index].value = e.target.value;
-                    setNewAnswerOptions(newAnswerOptionsCopy);
-                  }}
-                />
-                <Checkbox // Checkbox for correct answer
-                  onChange={(e) => {
-                    const newAnswerOptionsCopy = [...newAnswerOptions];
-                    newAnswerOptionsCopy[index].correct = e.target.checked;
-                    setNewAnswerOptions(newAnswerOptionsCopy);
-                  }}
-                />
-              </div>
-            );
-          })}
-          <button onClick={() => addNewRow()}>Submit question</button>
-        </div>
-      </body>
-    </div>
+        {newAnswerOptions.map((answerOption, index) => {
+          return (
+            <div className="addAnswerContainer" key={index + "AnswerContainer"}>
+              <TextField
+                label={"Answer " + (index + 1)} // 1, 2, 3, 4
+                required
+                value={answerOption.value}
+                onChange={(e) => {
+                  const newAnswerOptionsCopy = [...newAnswerOptions];
+                  newAnswerOptionsCopy[index].value = e.target.value;
+                  setNewAnswerOptions(newAnswerOptionsCopy);
+                }}
+              />
+              <Checkbox // Checkbox for correct answer
+                onChange={(e) => {
+                  const newAnswerOptionsCopy = [...newAnswerOptions];
+                  newAnswerOptionsCopy[index].correct = e.target.checked;
+                  setNewAnswerOptions(newAnswerOptionsCopy);
+                }}
+              />
+            </div>
+          );
+        })}
+        <button onClick={() => addNewRow()}>Submit question</button>
+      </div>
+    </body>
   );
 }

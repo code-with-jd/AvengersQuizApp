@@ -73,34 +73,32 @@ export default function Quiz() {
         setCurrentAppState("score")
       ) : (
         /* If it is not the specified end, questions are asked */
-        <body>
-          <div>
-            {questionsDatabase.length > 0 && (
-              <div class="quizContainer">
-                <p>Frage {questionCounter} von 12</p>
-                <h3>{questionsDatabase[currentQuestionIndex].question}</h3>
-                {questionsDatabase[currentQuestionIndex].answers.map(
-                  (answerOption) => {
-                    return (
-                      <div key={answerOption.value}>
-                        <button
-                          onClick={() =>
-                            handleAnwserButtonClick(answerOption.correct)
-                          }
-                        >
-                          {answerOption.value}
-                        </button>
-                      </div>
-                    );
-                  }
-                )}
-                <p>{score} von 12</p>
-              </div>
-            )}
-          </div>
-        </body>
+
+        <div>
+          {questionsDatabase.length > 0 && (
+            <div className="quizContainer">
+              <p>Frage {questionCounter} von 12</p>
+              <h3>{questionsDatabase[currentQuestionIndex].question}</h3>
+              {questionsDatabase[currentQuestionIndex].answers.map(
+                (answerOption) => {
+                  return (
+                    <div key={answerOption.value}>
+                      <button
+                        onClick={() =>
+                          handleAnwserButtonClick(answerOption.correct)
+                        }
+                      >
+                        {answerOption.value}
+                      </button>
+                    </div>
+                  );
+                }
+              )}
+              <p>{score} von 12</p>
+            </div>
+          )}
+        </div>
       )}
-      ;
     </div>
   );
 }

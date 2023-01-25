@@ -8,10 +8,11 @@ export default function AppNavContainer() {
   const [currentAppState, setCurrentAppState] = useState("start");
 
   return (
-    <div className="AppNavContainer">
+    <div>
       <header>
-        <h1>Agents of Shield - {currentAppState} </h1>
+        <h1>AGENTS OF SHIELD</h1>
       </header>
+
       {/* Navigate between pages, to keep code uncluttered  */}
       <AppContext.Provider value={{ currentAppState, setCurrentAppState }}>
         {currentAppState === "start" && <Start />}

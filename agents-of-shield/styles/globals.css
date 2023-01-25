@@ -19,7 +19,7 @@ header {
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #f5f5f7;
 }
 
@@ -53,12 +53,15 @@ button:hover {
   );
 }
 
-.menuContainer {
-  display: none;
+.startContainer {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  width: 320px;
+  margin: auto;
+  padding: 1rem;
 }
 
 .quizContainer {
@@ -67,25 +70,18 @@ button:hover {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  width: 320px;
+  margin: auto;
+  padding: 1rem;
 }
 
 .scoreConatiner {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-}
-
-.addTableRowContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.addAnswerContainer {
-  display: flex;
-  padding: 0.5rem;
+  width: 320px;
+  margin: auto;
+  padding: 1rem;
 }

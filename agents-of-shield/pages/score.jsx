@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { AppContext } from "../pages/createContext";
+import { List, ListItem } from "@mui/material";
 
 export default function score() {
   const supabase = useSupabaseClient();
@@ -30,19 +31,14 @@ export default function score() {
   }, []);
 
   return (
-    <body>
-      <div>
-        {scoreboard.length > 0 && (
-          <div class="scoreContainer">
-            <h3>{scoreboard[0].PlayerName}</h3>
-            {scoreboard[0].Score.map((scoreboard) => {
-              return <div key={scoreboard.value}></div>;
-            })}
-          </div>
-        )}
-      </div>
+    <div className="scoreConatiner">
+      {scoreboard.length > 0 && (
+        <div>
+          <p>{scoreboard[0].playerName}</p>
+        </div>
+      )}
 
       <button onClick={() => handleRestartButtonClick()}>Neustart</button>
-    </body>
+    </div>
   );
 }
