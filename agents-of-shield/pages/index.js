@@ -6,6 +6,9 @@ import { AppContext } from "../pages/createContext";
 
 export default function AppNavContainer() {
   const [currentAppState, setCurrentAppState] = useState("start");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [score, setScore] = useState(0);
 
   return (
     <div>
@@ -15,9 +18,20 @@ export default function AppNavContainer() {
 
       {/* Navigate between pages, to keep code uncluttered  */}
       <AppContext.Provider value={{ currentAppState, setCurrentAppState }}>
-        {currentAppState === "start" && <Start />}
-        {currentAppState === "quiz" && <Quiz />}
-        {currentAppState === "score" && <Score />}
+        {currentAppState === "start" && (
+          <Start
+            firstName={firstName}
+            lastName={lastName}
+            setFirstName={setFirstName}
+            setLastName={setLastName}
+          />
+        )}
+        {currentAppState === "quiz" && (
+          <Quiz score={score} setScore={setScore} />
+        )}
+        {currentAppState === "score" && (
+          <Score firstName={firstName} lastName={lastName} score={score} />
+        )}
       </AppContext.Provider>
     </div>
   );

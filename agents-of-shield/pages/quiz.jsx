@@ -2,11 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { AppContext } from "../pages/createContext";
 
-/* function randomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-} */
-
-export default function Quiz() {
+export default function Quiz({ score, setScore }) {
   const supabase = useSupabaseClient();
 
   const [questionsDatabase, setQuestionsDatabase] = useState(0);
@@ -19,8 +15,6 @@ export default function Quiz() {
   const [questionCounter, setQuestionCounter] = useState(
     1 /* User defined Value */
   );
-
-  const [score, setScore] = useState(0);
 
   const { currentAppState, setCurrentAppState } = useContext(AppContext);
 

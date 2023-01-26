@@ -47,7 +47,7 @@ export default function Home() {
       }
       resetInputFields();
     } else {
-      alert("Check your input fields");
+      alert("Überprüfe deine Eingaben");
     }
   }
 
