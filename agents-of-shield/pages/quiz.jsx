@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { AppContext } from "../pages/createContext";
 
-export default function Quiz({ score, setScore }) {
+export default function Quiz({ firstName, lastName, score, setScore }) {
   const supabase = useSupabaseClient();
 
   const [questionsDatabase, setQuestionsDatabase] = useState(0);
@@ -40,10 +40,25 @@ export default function Quiz({ score, setScore }) {
     if (questionCounter === 12) {
       alert("Du hast " + score + " von 12 Fragen richtig beantwortet");
       setCurrentAppState("score");
-      setScore(0); // This will reset the score to 0
       setQuestionCounter(1); // This will reset the questionCounter to 1
+      addUserScore();
+      setScore(0); // This will reset the score to 0
     }
   };
+
+  async function addUserScore() {
+    const { data, error } = await supabase.from("Scoreboard").insert([
+      {
+        firstName: firstName,
+        lastName: lastName,
+        playerScore: score,
+      },
+    ]);
+    if (error) {
+      console.log(error); // Bullit proofing - Check for errors
+      return;
+    }
+  }
 
   async function fetchDatabase() {
     const { data, error } = await supabase

@@ -27,11 +27,14 @@ export default function AppNavContainer() {
           />
         )}
         {currentAppState === "quiz" && (
-          <Quiz score={score} setScore={setScore} />
+          <Quiz
+            firstName={firstName}
+            lastName={lastName}
+            score={score}
+            setScore={setScore}
+          />
         )}
-        {currentAppState === "score" && (
-          <Score firstName={firstName} lastName={lastName} score={score} />
-        )}
+        {currentAppState === "score" && <Score />}
       </AppContext.Provider>
     </div>
   );
