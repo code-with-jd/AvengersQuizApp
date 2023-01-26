@@ -22,8 +22,6 @@ export default function Quiz() {
 
   const [score, setScore] = useState(0);
 
-  const [showScore, setShowScore] = useState(false);
-
   const { currentAppState, setCurrentAppState } = useContext(AppContext);
 
   /* Adds 1 to the score if the answer is correct */
@@ -45,8 +43,9 @@ export default function Quiz() {
       setCurrentQuestionIndex(0);
     }
 
-    if (questionCounter === 12 - 1) {
-      setShowScore(true);
+    if (questionCounter === 12) {
+      alert("Du hast " + score + " von 12 Fragen richtig beantwortet");
+      setCurrentAppState("score");
     }
   };
 
@@ -68,37 +67,30 @@ export default function Quiz() {
 
   return (
     <div>
-      {/* Score that will be displayed at the end of the quiz */}
-      {showScore ? (
-        setCurrentAppState("score")
-      ) : (
-        /* If it is not the specified end, questions are asked */
-
-        <div>
-          {questionsDatabase.length > 0 && (
-            <div className="quizContainer">
-              <p>Frage {questionCounter} von 12</p>
-              <h3>{questionsDatabase[currentQuestionIndex].question}</h3>
-              {questionsDatabase[currentQuestionIndex].answers.map(
-                (answerOption) => {
-                  return (
-                    <div key={answerOption.value}>
-                      <button
-                        onClick={() =>
-                          handleAnwserButtonClick(answerOption.correct)
-                        }
-                      >
-                        {answerOption.value}
-                      </button>
-                    </div>
-                  );
-                }
-              )}
-              <p>{score} von 12</p>
-            </div>
-          )}
-        </div>
-      )}
+      <div>
+        {questionsDatabase.length > 0 && (
+          <div className="quizContainer">
+            <p>Frage {questionCounter} von 12</p>
+            <h3>{questionsDatabase[currentQuestionIndex].question}</h3>
+            {questionsDatabase[currentQuestionIndex].answers.map(
+              (answerOption) => {
+                return (
+                  <div key={answerOption.value}>
+                    <button
+                      onClick={() =>
+                        handleAnwserButtonClick(answerOption.correct)
+                      }
+                    >
+                      {answerOption.value}
+                    </button>
+                  </div>
+                );
+              }
+            )}
+            <p>{score} von 12</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

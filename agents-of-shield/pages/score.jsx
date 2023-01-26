@@ -12,7 +12,6 @@ export default function score() {
     setCurrentAppState("quiz"); // This will change the currentAppState to "quiz"
     setScore(0); // This will reset the score to 0
     setQuestionCounter(1); // This will reset the questionCounter to 1
-    setShowScore(false); // This will reset the showScore to false
   };
 
   async function fetchDatabase() {
@@ -43,7 +42,6 @@ export default function score() {
           ))}
         </ol>
       )}
-      <p>Du hast {score} Punkte erreicht.</p>
 
       <button onClick={() => handleRestartButtonClick()}>Neustart</button>
     </div>
