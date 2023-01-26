@@ -1,24 +1,33 @@
+import React, { useContext, useState } from "react";
 import { TextField } from "@mui/material";
-import React, { useContext } from "react";
 import { AppContext } from "../pages/createContext";
 
 export default function Start() {
   const { currentAppState, setCurrentAppState } = useContext(AppContext);
-  const numberOfQuestions = "";
+  const [username, setUsername] = useState("");
+
+  const handleStartButtonClick = () => {
+    if (username === "") {
+      alert("Bitte geben Sie Ihren Namen ein");
+    } else {
+      setCurrentAppState("quiz");
+    }
+  };
 
   return (
     <div className="startContainer">
+      <p>Einstellungstest für neue Agenten</p>
       <p>
         Ihr Prüfer: <b>Phillip J. Coulson</b>{" "}
       </p>
-      <TextField label="Vollständiger Name" required></TextField>
-      {/*       <TextField
-        label="Anzahl der Fragen"
+      <TextField
+        label="Vollständiger Name"
         required
-        value={numberOfQuestions}
-      ></TextField> */}
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      ></TextField>
 
-      <button onClick={() => setCurrentAppState("quiz")}>Teilnehmen</button>
+      <button onClick={() => handleStartButtonClick()}>Teilnehmen</button>
     </div>
   );
 }

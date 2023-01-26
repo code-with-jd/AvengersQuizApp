@@ -10,8 +10,6 @@ export default function score() {
   const handleRestartButtonClick = () => {
     // This will reset the quiz
     setCurrentAppState("quiz"); // This will change the currentAppState to "quiz"
-    setScore(0); // This will reset the score to 0
-    setQuestionCounter(1); // This will reset the questionCounter to 1
   };
 
   async function fetchDatabase() {
@@ -27,7 +25,7 @@ export default function score() {
   useEffect(() => {
     fetchDatabase();
   }, []);
-  console.log(scoreboard);
+
   return (
     <div className="scoreConatiner">
       <p>

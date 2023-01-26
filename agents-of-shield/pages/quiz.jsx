@@ -46,6 +46,8 @@ export default function Quiz() {
     if (questionCounter === 12) {
       alert("Du hast " + score + " von 12 Fragen richtig beantwortet");
       setCurrentAppState("score");
+      setScore(0); // This will reset the score to 0
+      setQuestionCounter(1); // This will reset the questionCounter to 1
     }
   };
 
