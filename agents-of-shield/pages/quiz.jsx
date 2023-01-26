@@ -50,7 +50,7 @@ export default function Quiz() {
     }
   };
 
-  async function ffetchDatabase() {
+  async function fetchDatabase() {
     const { data, error } = await supabase
       .from("QuestionsDatabase")
       .select("*");
@@ -63,7 +63,7 @@ export default function Quiz() {
   }
 
   useEffect(() => {
-    ffetchDatabase();
+    fetchDatabase();
   }, []);
 
   return (

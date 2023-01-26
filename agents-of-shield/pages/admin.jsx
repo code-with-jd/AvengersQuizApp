@@ -51,7 +51,7 @@ export default function Home() {
     }
   }
 
-  async function ffetchDatabase() {
+  async function fetchDatabase() {
     const { data, error } = await supabase
       .from("QuestionsDatabase")
       .select("*");
@@ -64,7 +64,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    ffetchDatabase();
+    fetchDatabase();
   }, []);
 
   async function addAnswer() {
@@ -88,7 +88,7 @@ export default function Home() {
 
     setNewAnswerValue("");
     setNewAnswerCorrect(false);
-    ffetchDatabase();
+    fetchDatabase();
   }
 
   async function handleDeleteAnswer(answerValue) {
@@ -105,7 +105,7 @@ export default function Home() {
       return;
     }
 
-    ffetchDatabase();
+    fetchDatabase();
   }
 
   return (

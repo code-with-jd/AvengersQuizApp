@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { AppContext } from "../pages/createContext";
-import { List, ListItem } from "@mui/material";
 
 export default function score() {
   const supabase = useSupabaseClient();
@@ -16,7 +15,7 @@ export default function score() {
     setShowScore(false); // This will reset the showScore to false
   };
 
-  async function ffetchDatabase() {
+  async function fetchDatabase() {
     const { data, error } = await supabase.from("Scoreboard").select("*");
     if (error) {
       console.log(error); // Bullit proofing - Check for errors
@@ -27,16 +26,24 @@ export default function score() {
   }
 
   useEffect(() => {
-    ffetchDatabase();
+    fetchDatabase();
   }, []);
-
+  console.log(scoreboard);
   return (
     <div className="scoreConatiner">
+      <p>
+        <b>Bestenliste</b>
+      </p>
       {scoreboard.length > 0 && (
-        <div>
-          <p>{scoreboard[0].playerName}</p>
-        </div>
+        <ol>
+          {scoreboard.map((scoreboard) => (
+            <li key={scoreboard.id}>
+              {scoreboard.playerName} {scoreboard.playerScore}
+            </li>
+          ))}
+        </ol>
       )}
+      <p>Du hast {score} Punkte erreicht.</p>
 
       <button onClick={() => handleRestartButtonClick()}>Neustart</button>
     </div>
