@@ -13,7 +13,9 @@ export default function AppNavContainer() {
   return (
     <div>
       <header>
+        <img className="AgencyLogo" />
         <h1>AGENTS OF SHIELD</h1>
+        <div className="LoginButton"></div>
       </header>
 
       {/* Navigate between pages, to keep code uncluttered  */}
